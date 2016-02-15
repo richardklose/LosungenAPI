@@ -1,20 +1,31 @@
 var parser = require('xml2json');
 var fs = require('fs');
 
+Date.prototype.getMonthFormatted = function() {
+    var month = parseInt(this.getMonth()) + 1;
+    console.log(month);
+    return month < 10 ? '0' + month : '' + month; // ('' + month) for string result
+}
+
 module.exports = {
 
-    get:function(date,_callback){
-        var file = process.cwd()+'/data/xml/'+date.getFullYear()+".xml";
+    get:function(year,month,day,_callback){
+        var file = process.cwd()+'/data/xml/'+year+".xml";
         fs.access(file,fs.R_OK,function(err){
             if(!err){
                 fs.readFile(file,'utf8',function(err,data){
                     if(!err){
                         var L = parser.toJson(data,{object:true}).FreeXml.Losungen;
                         var result = {
-                            error:{code:'INVDATE'}
+                            error:{
+                                code:'INVDATE',
+                                year:year,
+                                month:month,
+                                day:day
+                            }
                         };
                         for(var i in L){
-                            if(L[i].Datum.substr(0,10) === date.toISOString().substr(0,10)){
+                            if(L[i].Datum.substr(0,10) === year+'-'+month+'-'+day){
                                 result = L[i];
                             }
                         }

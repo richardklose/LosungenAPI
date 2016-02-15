@@ -4,13 +4,10 @@ var Losungen = require('../../data');
 /* GET home page. */
 router.get('/', function(req, res, next) {
     var date = new Date();
-    Losungen.get(date,function(data){
-        if(data.error){
-            res.send(data.error.code);
-        }
-        else{
+    Losungen.get(date.getFullYear(),date.getMonthFormatted(),date.getDate(),function(data){
+
             res.json(data);
-        }
+
     });
 });
 

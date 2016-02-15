@@ -5,8 +5,7 @@ var today = require('./today');
 var Losungen = require('../../data');
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index', { title: 'API' });
-    console.log(req.params);
+    res.render('api', { title: 'LosungenAPI | API Dokumentation' });
 });
 
 router.use('/today',today);
@@ -22,14 +21,13 @@ router.use('/today',today);
 
 router.get('/:year/:month/:day',function(req,res,next){
     console.log(req.params);
-    var date = new Date(req.params.year,req.params.month-1,req.params.day,1,0,0);
-    Losungen.get(date,function(data){
-        if(data.error){
-            res.send(data.error.code);
-        }
-        else{
+    var y = req.params.year;
+    var m = req.params.month;
+    var d = req.params.day;
+    Losungen.get(y,m,d,function(data){
+
             res.json(data);
-        }
+
     });
 });
 
