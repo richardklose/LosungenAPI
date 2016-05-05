@@ -1,5 +1,5 @@
 # LosungenAPI
-a nodejs API For Accessing Herrenhuther Losungen via HTTP Requests. Have a look at http://losungen.klose.cloud to see it in action.
+a nodejs API For Accessing Herrehuter Losungen via HTTP Requests. Have a look at http://losungen.klose.cloud to see it in action.
 
 ## Installation
 ### Get source
