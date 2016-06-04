@@ -4,7 +4,7 @@ var Losungen = require('../../data');
 /* GET home page. */
 router.get('/', function(req, res, next) {
     var date = new Date();
-    Losungen.get(date.getFullYear(),date.getMonthFormatted(),date.getDate(),function(data){
+    Losungen.get(date.getFullYear(),date.getMonthFormatted(),date.getDayFormatted(),function(data){
 
             res.json(data);
 

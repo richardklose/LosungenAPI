@@ -7,6 +7,12 @@ Date.prototype.getMonthFormatted = function() {
     return month < 10 ? '0' + month : '' + month; // ('' + month) for string result
 }
 
+Date.prototype.getDayFormatted = function() {
+    var day = parseInt(this.getDate()) + 1;
+    console.log(day);
+    return day < 10 ? '0' + day : '' + day; // ('' + month) for string result
+}
+
 module.exports = {
 
     get:function(year,month,day,_callback){
