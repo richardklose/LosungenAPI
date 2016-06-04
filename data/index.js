@@ -3,13 +3,11 @@ var fs = require('fs');
 
 Date.prototype.getMonthFormatted = function() {
     var month = parseInt(this.getMonth()) + 1;
-    console.log(month);
     return month < 10 ? '0' + month : '' + month; // ('' + month) for string result
 }
 
 Date.prototype.getDayFormatted = function() {
-    var day = parseInt(this.getDate()) + 1;
-    console.log(day);
+    var day = parseInt(this.getDate());
     return day < 10 ? '0' + day : '' + day; // ('' + month) for string result
 }
 
