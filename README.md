@@ -12,5 +12,12 @@ a nodejs API For Accessing Herrehuter Losungen via HTTP Requests. Have a look at
 You can download the xml files from http://www.losungen.de/download/ and put them in <code>data/xml</code>. Change the filename to the four digit year.(e.g the xml file for 2016 should be named 2016.xml)
 
 ### Run
-From the base directory execute <code>node bin/www</code>
+<code>npm start</code>
+
+### Usage examples
+You can integrate the API in your desktop.
+#### Windows
+You can find a Rainmeter skin here: Repository https://git.klose.cloud/richard/rainmeter-skins/tree/master/losungen
+#### Mac OS X
+You can find a Übersicht widget here: https://git.klose.cloud/richard/uebersicht-widgets/tree/master/dailybibleverse.widget
 
