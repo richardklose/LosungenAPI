@@ -4,9 +4,9 @@ var today = require('./today');
 
 var Losungen = require('../../data');
 /* GET home page. */
-router.get('/', function(req, res, next) {
+/*router.get('/', function(req, res, next) {
     res.render('api', { title: 'LosungenAPI | API Dokumentation' });
-});
+});*/
 
 router.use('/today',today);
 
