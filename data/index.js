@@ -1,26 +1,26 @@
-var parser = require('xml2json');
-var fs = require('fs');
+const parser = require('xml2json');
+const fs = require('fs');
 
 Date.prototype.getMonthFormatted = function() {
-    var month = parseInt(this.getMonth()) + 1;
+    const month = parseInt(this.getMonth()) + 1;
     return month < 10 ? '0' + month : '' + month; // ('' + month) for string result
 }
 
 Date.prototype.getDayFormatted = function() {
-    var day = parseInt(this.getDate());
+    const day = parseInt(this.getDate());
     return day < 10 ? '0' + day : '' + day; // ('' + month) for string result
 }
 
 module.exports = {
 
     get:function(year,month,day,_callback){
-        var file = process.cwd()+'/data/xml/'+year+".xml";
+        const file = process.cwd()+'/data/xml/'+year+".xml";
         fs.access(file,fs.R_OK,function(err){
             if(!err){
                 fs.readFile(file,'utf8',function(err,data){
                     if(!err){
-                        var L = parser.toJson(data,{object:true}).FreeXml.Losungen;
-                        var result = {
+                        const L = parser.toJson(data,{object:true}).FreeXml.Losungen;
+                        let result = {
                             error:{
                                 code:'INVDATE',
                                 year:year,
@@ -28,7 +28,7 @@ module.exports = {
                                 day:day
                             }
                         };
-                        for(var i in L){
+                        for(const i in L){
                             if(L[i].Datum.substr(0,10) === year+'-'+month+'-'+day){
                                 result = L[i];
                             }
@@ -42,20 +42,6 @@ module.exports = {
             }
             else{
                 _callback({error:err});
-            }
-        });
-    },
-
-    availableYears:function(_callback){
-        fs.readdir(process.cwd()+'/data/xml/',function(err,files){
-            if(err){
-                _callback([]);
-            }
-            else{
-                for(var i in files){
-                    files[i] = files[i].replace(".xml","");
-                }
-                _callback(files);
             }
         });
     }
